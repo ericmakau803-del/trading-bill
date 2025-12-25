@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Pash ❤️</title>
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #7b0000, #330000);
+            color: white; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            text-align: center;
+        }
+        .container {
+            width: 85%; max-width: 350px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px; border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h1 { font-size: 24px; }
+        .btn {
+            padding: 15px 30px; border-radius: 50px;
+            border: none; font-weight: bold; cursor: pointer;
+            margin-top: 20px; width: 100%;
+        }
+        .btn-yes { background: white; color: #7b0000; }
+        .hidden { display: none; }
+        .special-note { color: #ffda00; font-weight: bold; font-size: 22px; margin: 20px 0; }
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .card { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px; }
+    </style>
+</head>
+<body>
+
+    <audio id="myAudio" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="step1" class="container">
+        <h1>Hi Pash! ❤️</h1>
+        <p>I have a small surprise for you.<br>Uko ready kuvibe?</p>
+        <button class="btn btn-yes" onclick="start()">YES, I'M READY!</button>
+    </div>
+
+    <div id="stepMenu" class="container hidden">
+        <p>FOR YOU, MY LOVE</p>
+        <div class="menu-grid">
+            <div class="card" onclick="show('jar')">🫙<br>Love Jar</div>
+            <div class="card" onclick="show('note')">📩<br>Note</div>
+        </div>
+        <p style="margin-top:20px; font-size: 12px; opacity: 0.7;">(Muziki inafaa kuwa inavibe sasa hivi...)</p>
+        <button onclick="playMusic()" style="background:none; border:1px solid white; color:white; padding:5px; border-radius:10px; font-size:10px;">Music not playing? Click here</button>
+    </div>
+
+    <div id="sectionNote" class="container hidden">
+        <h3>A Message for Pash 📩</h3>
+        <p>You are truly the best thing that ever happened to me. Kila day unakuja na furaha mpya kwa life yangu.</p>
+        <div class="special-note">Nakupenda wewe umbwa! 😂❤️</div>
+        <button class="btn btn-yes" onclick="back()">Back</button>
+    </div>
+
+    <div id="sectionJar" class="container hidden">
+        <h3>JAR OF LOVE 🫙</h3>
+        <p>• You feel like home</p>
+        <p>• Unanishughulikia sana</p>
+        <p>• You are my fave person</p>
+        <button class="btn btn-yes" onclick="back()">Back</button>
+    </div>
+
+    <script>
+        var x = document.getElementById("myAudio"); 
+
+        function playMusic() {
+            x.play().catch(function(error) {
+                console.log("Browser blocked autoplay");
+            });
+        }
+
+        function start() {
+            playMusic();
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('stepMenu').classList.remove('hidden');
+        }
+
+        function show(id) {
+            document.getElementById('stepMenu').classList.add('hidden');
+            if(id=='jar') document.getElementById('sectionJar').classList.remove('hidden');
+            if(id=='note') document.getElementById('sectionNote').classList.remove('hidden');
+        }
+
+        function back() {
+            document.getElementById('sectionJar').classList.add('hidden');
+            document.getElementById('sectionNote').classList.add('hidden');
+            document.getElementById('stepMenu').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
